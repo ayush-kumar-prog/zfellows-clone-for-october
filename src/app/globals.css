@@ -5,11 +5,45 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-heading: var(--font-sans);
+  /* === Z Fellows palette === */
+  --color-background: var(--background);            /* cream #FFFDF3 */
+  --color-foreground: var(--foreground);            /* black */
+  --color-primary: var(--primary);                  /* primary blue #2067FF */
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);                    /* light blue #4AAEFF */
+  --color-accent-foreground: var(--accent-foreground);
+  --color-secondary: var(--secondary);              /* warm white #F7F4E9 */
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* zfellows-specific tokens */
+  --color-warm-white: #f7f4e9;
+  --color-cream: #fffdf3;
+  --color-blue: #2067ff;
+  --color-blue-light: #4aaeff;
+  --color-dark-blue: #000b1c;
+  --color-dark-slate: #313a48;
+  --color-grey-deep: #404040;
+  --color-grey-mid: #585858;
+  --color-grey-soft: #706e6e;
+  --color-grey-cool: #e1e4ea;
+  --color-grey-light: #d4d4d4;
+  --color-grey-lighter: #ebebeb;
+  --color-white-smoke: #eeeeee;
+  --color-off-white: #f6f6fa;
+  --color-ghost-white: #edeaf5;
+  --color-faq-stroke: #363636;
+
+  /* sidebar */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -23,22 +57,16 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+
+  /* === Fonts === */
+  --font-sans: var(--font-inter), "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), "Inter Tight Fallback", var(--font-inter), ui-sans-serif, sans-serif;
+  --font-accent: var(--font-outfit), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-brand: "General Sans", var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-sans);
+
+  /* radii (Webflow uses 9999px+ for fully rounded pills — keep large values) */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -46,75 +74,77 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-pill: 9999px;
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Z Fellows light theme — cream/blue palette */
+  --background: #fffdf3;            /* cream page bg */
+  --foreground: #000000;            /* black body text */
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #2067ff;               /* primary blue */
+  --primary-foreground: #fffdf3;    /* cream text on blue */
+  --secondary: #f7f4e9;             /* warm white */
+  --secondary-foreground: #000000;
+  --muted: #f7f4e9;
+  --muted-foreground: #585858;
+  --accent: #4aaeff;                /* light blue accent */
+  --accent-foreground: #000000;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --border: #ebebeb;
+  --input: #ebebeb;
+  --ring: #2067ff;
+  --chart-1: #2067ff;
+  --chart-2: #4aaeff;
+  --chart-3: #585858;
+  --chart-4: #404040;
+  --chart-5: #313a48;
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #2067ff;
+  --sidebar-primary-foreground: #fffdf3;
+  --sidebar-accent: #f7f4e9;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #ebebeb;
+  --sidebar-ring: #2067ff;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #000b1c;
+  --foreground: #fffdf3;
+  --card: #0a1428;
+  --card-foreground: #fffdf3;
+  --popover: #0a1428;
+  --popover-foreground: #fffdf3;
+  --primary: #4aaeff;
+  --primary-foreground: #000b1c;
+  --secondary: #313a48;
+  --secondary-foreground: #fffdf3;
+  --muted: #313a48;
+  --muted-foreground: #d4d4d4;
+  --accent: #2067ff;
+  --accent-foreground: #fffdf3;
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --ring: #4aaeff;
+  --chart-1: #4aaeff;
+  --chart-2: #2067ff;
+  --chart-3: #d4d4d4;
+  --chart-4: #585858;
+  --chart-5: #313a48;
+  --sidebar: #0a1428;
+  --sidebar-foreground: #fffdf3;
+  --sidebar-primary: #4aaeff;
+  --sidebar-primary-foreground: #000b1c;
+  --sidebar-accent: #313a48;
+  --sidebar-accent-foreground: #fffdf3;
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: #4aaeff;
 }
 
 @layer base {
@@ -123,8 +153,49 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  /* Z Fellows article body uses General Sans */
+  .font-brand,
+  .prose-zf {
+    font-family: var(--font-brand);
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-accent {
+    font-family: var(--font-accent);
+  }
+}
+
+/* === Utility: pill button (matches Apply Now CTA) === */
+@layer utilities {
+  .btn-zf-primary {
+    background-color: var(--color-blue);
+    color: var(--color-cream);
+    padding: 13.6px 40px;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.72px;
+    box-shadow:
+      inset 0 4px 8px rgba(117, 169, 255, 0.4),
+      inset 0 -4px 8px rgba(117, 169, 255, 0.2);
+    transition: all 0.2s ease;
+    border: none;
+    display: inline-block;
+    line-height: 1;
+  }
+  .btn-zf-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 4px 8px rgba(117, 169, 255, 0.5),
+      inset 0 -4px 8px rgba(117, 169, 255, 0.25),
+      0 4px 12px rgba(32, 103, 255, 0.25);
   }
 }
