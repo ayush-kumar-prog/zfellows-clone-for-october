@@ -1749,6 +1749,20 @@ img {
     padding: 80px 22px 64px;
   }
 
+  .atelier-quote p {
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+  }
+
+  .atelier-hero__copy h1 {
+    font-size: 56px;
+  }
+
+  .atelier-hero__copy {
+    padding-bottom: 32px;
+  }
+
   .atelier-rituals,
   .atelier-detail,
   .atelier-capsule,
@@ -2369,7 +2383,13 @@ img {
   }
 
   .tokyo-drop__head h2 {
-    font-size: 48px;
+    font-size: 40px;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+  }
+
+  .tokyo-drop__head h2 span {
+    margin-right: 0.18em;
   }
 
   .tokyo-drop__grid {
@@ -2990,6 +3010,12 @@ img {
 
   .coast-letter {
     padding: 80px 22px 60px;
+  }
+
+  .coast-letter > p:not(.coast-eyebrow) {
+    font-size: 18px;
+    line-height: 1.45;
+    letter-spacing: 0;
   }
 
   .coast-routes,
