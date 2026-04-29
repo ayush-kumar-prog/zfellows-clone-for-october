@@ -1,42 +1,36 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Inter, Inter_Tight, Outfit } from "next/font/google";
+import { Oswald, Poppins } from "next/font/google";
 import "./globals.css";
 import { PosthogProvider } from "@/components/PosthogProvider";
 
-const inter = Inter({
-  variable: "--font-inter",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  display: "swap",
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  weight: ["400"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Z Fellows | Get Fast-Tracked into Silicon Valley",
+  metadataBase: new URL("https://zfellows-clone.vercel.app"),
+  title: "TheSolids.co",
   description:
-    "We give you $10k to go all in on your project/idea for a week. Join a cohort of early technical thinkers and learn from Silicon Valley's smartest mentors. Helping people build in consumer, social, enterprise, healthcare, edtech, fintech, cloud infrastructure, cybersecurity, crypto, Web3, AI, ML, climate, biotech, and more.",
+    "Premium essentials, oversized t-shirts, joggers, tank tops, and everyday solids.",
   icons: {
-    icon: "/seo/favicon.png",
+    icon: "/thesolids/penguin.svg",
   },
   openGraph: {
-    title: "Z Fellows | Get Fast-Tracked into Silicon Valley",
+    title: "TheSolids.co",
     description:
-      "1 week. $10,000. Z Fellows fast-tracks you into Silicon Valley.",
-    images: ["/seo/social-preview.png"],
+      "Premium essentials, oversized t-shirts, joggers, tank tops, and everyday solids.",
+    images: ["/thesolids/hero-frame-24.jpg"],
   },
 };
 
@@ -48,18 +42,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${interTight.variable} ${outfit.variable} h-full antialiased`}
+      className={`${poppins.variable} ${oswald.variable} h-full antialiased`}
     >
-      <head>
-        {/* Fontshare: General Sans (used for brand wordmark + writings article body) */}
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap"
-        />
-      </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
+      <body className="min-h-full bg-background text-foreground font-sans">
+        {children}
         <Suspense fallback={null}>
-          <PosthogProvider>{children}</PosthogProvider>
+          <PosthogProvider />
         </Suspense>
       </body>
     </html>

@@ -38,7 +38,7 @@ function ensureInit() {
   });
 }
 
-export function PosthogProvider({ children }: { children: React.ReactNode }) {
+export function PosthogProvider({ children }: { children?: React.ReactNode }) {
   const pathname = usePathname();
   const search = useSearchParams();
 
@@ -55,5 +55,5 @@ export function PosthogProvider({ children }: { children: React.ReactNode }) {
     posthog.capture("$pageview", { $current_url: url });
   }, [pathname, search]);
 
-  return <>{children}</>;
+  return <>{children ?? null}</>;
 }
