@@ -34,6 +34,28 @@ The canvas is `is_public = true` with `share_settings.allowDuplication
 = true`, so anyone with the share link can open it read-only and clone
 their own editable copy.
 
+## Editable view (canvas owner)
+
+The canvas is owned by Harsh
+(`60dc01e1-b7f8-4e24-aa85-86115e4272ec`). When he signs in to October
+and opens the canvas, October's `/api/dash-preview` action automatically
+starts the linked Daytona sandbox
+(`8a9f59ac-fae4-4779-84af-1824a9b3086c`), which clones this repo, runs
+`npm install`, and serves the dev server on port 3000. The four
+`canvas_screens` then iframe that running server using their stored
+`route_path`, so the canvas surface mirrors the live Vercel routes 1:1
+and is editable through the canvas chat boxes.
+
+The Daytona sandbox is provisioned (or refreshed) by:
+
+```
+VITE_SUPA_PROJECT_URL=... VITE_SUPA_SERVICE_ROLE=... \
+DAYTONA_API_KEY=... node scripts/provision-october-sandbox.mjs
+```
+
+It's idempotent — reuses the existing sandbox if `daytona_sandbox_id`
+is already pinned to the dash_project, otherwise it creates a new one.
+
 ## Refreshing the canvas
 
 After redeploying the variants on Vercel, rerun:
