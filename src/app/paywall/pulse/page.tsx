@@ -18,10 +18,13 @@ export default function PulsePaywall() {
     .map((h) => products.find((p) => p.handle === h))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-  const subtotal = items.reduce(
+  const subtotalRaw = items.reduce(
     (sum, it) => sum + (parseFloat(it.price.replace(/[^\d.]/g, "")) || 0),
     0,
   );
+  const subtotal = Math.round(subtotalRaw)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return (
     <main className="pulse">
@@ -63,7 +66,7 @@ export default function PulsePaywall() {
           </div>
           <div className="pulse-total">
             <span>Reserved total</span>
-            <strong>Rs. {subtotal.toLocaleString("en-IN")}</strong>
+            <strong>Rs. {subtotal}</strong>
           </div>
           <Link href="/cart" className="pulse-cta">
             Finish hold
