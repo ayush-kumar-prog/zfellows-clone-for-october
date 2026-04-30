@@ -35,7 +35,7 @@ const capsules: Card[] = [
   },
 ];
 
-const paywalls: Card[] = [
+const checkouts: Card[] = [
   {
     tag: "Checkout 01 — Library",
     title: "An order, like a letter.",
@@ -59,6 +59,49 @@ const paywalls: Card[] = [
       "A museum print acquire. One hundred and forty-four pieces. Stamped by hand. Closes when 144 are gone.",
     href: "/p/edition",
     image: "/thesolids/paywalls/edition-hero.jpg",
+  },
+];
+
+const paywalls: Card[] = [
+  {
+    tag: "Paywall 01 — Wall",
+    title: "Sign in to keep your seat.",
+    description:
+      "Hard sign-in wall. Navy + brass + spotlight. The cart is held for nine minutes, then the seat opens.",
+    href: "/paywall/wall",
+    image: "/thesolids/walls/wall-hero.jpg",
+  },
+  {
+    tag: "Paywall 02 — Glass",
+    title: "Drop your email. Take ten.",
+    description:
+      "An email gate over a sun-fogged window. Cream and serif. One code, then quiet — no email storm.",
+    href: "/paywall/glass",
+    image: "/thesolids/walls/glass-hero.jpg",
+  },
+  {
+    tag: "Paywall 03 — Vault",
+    title: "Reserved for members.",
+    description:
+      "Members-only restock. A brass key on emerald velvet. Sign in or join the Atelier circle for free.",
+    href: "/paywall/vault",
+    image: "/thesolids/walls/vault-hero.jpg",
+  },
+  {
+    tag: "Paywall 04 — Pulse",
+    title: "Nine minutes to checkout.",
+    description:
+      "Urgency timer. Ink, tomato red, and a watch face that ticks. After ten minutes the seats reopen.",
+    href: "/paywall/pulse",
+    image: "/thesolids/walls/pulse-hero.jpg",
+  },
+  {
+    tag: "Paywall 05 — Velvet",
+    title: "Slip in the side door.",
+    description:
+      "First-time soft entry. Burgundy curtain, cream card, fifteen percent for friends arriving for the first time.",
+    href: "/paywall/velvet",
+    image: "/thesolids/walls/velvet-hero.jpg",
   },
 ];
 
@@ -93,14 +136,14 @@ export function SolidsVariants() {
         <header className="variants-canvas__head">
           <span className="variants-canvas__eyebrow">Solids — gallery</span>
           <h1>
-            Six rooms,
+            Eleven rooms,
             <br />
             <em>one wardrobe.</em>
           </h1>
           <p className="variants-canvas__lede">
-            Three capsules — the landing pages — and three checkouts — the
-            paywalls. Same cotton, six different rooms. Tap any tile to open
-            the surface.
+            Three capsules, three checkouts, five paywalls — eleven surfaces
+            for the same Solids essential, each one in a different room. Tap
+            any tile to open the surface.
           </p>
         </header>
 
@@ -115,7 +158,15 @@ export function SolidsVariants() {
         <section className="variants-canvas__section">
           <header className="variants-canvas__section-head">
             <span className="variants-canvas__section-tag">The checkouts</span>
-            <p>Three paywalls — Library, Members, Edition.</p>
+            <p>Three checkout flows — Library, Members, Edition.</p>
+          </header>
+          <Grid items={checkouts} />
+        </section>
+
+        <section className="variants-canvas__section">
+          <header className="variants-canvas__section-head">
+            <span className="variants-canvas__section-tag">The paywalls</span>
+            <p>Five walls — Wall, Glass, Vault, Pulse, Velvet.</p>
           </header>
           <Grid items={paywalls} />
         </section>
