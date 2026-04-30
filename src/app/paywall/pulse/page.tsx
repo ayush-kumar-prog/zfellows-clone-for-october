@@ -19,7 +19,7 @@ export default function PulsePaywall() {
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   const subtotalRaw = items.reduce(
-    (sum, it) => sum + (parseFloat(it.price.replace(/[^\d.]/g, "")) || 0),
+    (sum, it) => sum + (parseFloat(it.price.match(/\d+(?:\.\d+)?/)?.[0] ?? "0") || 0),
     0,
   );
   const subtotal = Math.round(subtotalRaw)
