@@ -19,7 +19,7 @@ export default function PulsePaywall() {
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   const subtotal = items.reduce(
-    (sum, it) => sum + (parseInt(it.price.replace(/[^\d]/g, ""), 10) || 0),
+    (sum, it) => sum + (parseFloat(it.price.replace(/[^\d.]/g, "")) || 0),
     0,
   );
 
