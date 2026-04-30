@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type VariantCard = {
+type Card = {
   tag: string;
   title: string;
   description: string;
@@ -8,67 +8,117 @@ type VariantCard = {
   image: string;
 };
 
-const variantCards: VariantCard[] = [
+const capsules: Card[] = [
   {
-    tag: "Variant · Atelier",
-    title: "Quiet luxury, magazine cut.",
+    tag: "Capsule N°04",
+    title: "Atelier — quiet luxury.",
     description:
-      "Cream linen, slow serif headlines, a single full-bleed editorial portrait. For the customer who already owns five black tees and is ready to spend on the soft cream one.",
+      "Cream linen, slow serif, a single full-bleed editorial portrait. The cotton you reach for on mornings that matter.",
     href: "/v/atelier",
     image: "/thesolids/variants/atelier-hero.jpg",
   },
   {
-    tag: "Variant · Tokyo",
-    title: "Drop 04 — Tokyo, 22:00 JST.",
+    tag: "Capsule N°05",
+    title: "Tokyo — the late hours.",
     description:
-      "Black background, acid yellow ticker, a Shibuya hero, embroidered SOLIDS at the cuff. For the streetwear customer who treats every restock like a release week.",
+      "Ink black, warm amber, a city interior at twilight. Four cottons cut for the late hours.",
     href: "/v/tokyo",
     image: "/thesolids/variants/tokyo-hero.jpg",
   },
   {
-    tag: "Variant · Coast",
-    title: "Built for the morning.",
+    tag: "Capsule N°06",
+    title: "Coast — slow mornings.",
     description:
-      "Sun-bleached pastels, route cards, dawn beach lifestyle. For the customer who runs before the city wakes — solids paired with miles, swims, and slow coffee.",
+      "Cream and sea-blue, dawn light on folded cotton. The first thing you reach for, the last thing you take off.",
     href: "/v/coast",
     image: "/thesolids/variants/coast-hero.jpg",
   },
 ];
+
+const paywalls: Card[] = [
+  {
+    tag: "Checkout 01 — Library",
+    title: "An order, like a letter.",
+    description:
+      "A bookshop checkout. Roman numerals, cream paper, no urgency. Wrapped in a card and posted on Tuesday.",
+    href: "/p/library",
+    image: "/thesolids/paywalls/library-hero.jpg",
+  },
+  {
+    tag: "Checkout 02 — Members",
+    title: "Two cottons, held for you.",
+    description:
+      "A concierge hold. Members pay ten percent less, always. Sage and brass, a key on a tray, no email storm.",
+    href: "/p/member",
+    image: "/thesolids/paywalls/member-hero.jpg",
+  },
+  {
+    tag: "Checkout 03 — Edition",
+    title: "Edition 04 · 04 / 144.",
+    description:
+      "A museum print acquire. One hundred and forty-four pieces. Stamped by hand. Closes when 144 are gone.",
+    href: "/p/edition",
+    image: "/thesolids/paywalls/edition-hero.jpg",
+  },
+];
+
+function Grid({ items }: { items: Card[] }) {
+  return (
+    <div className="variants-canvas__grid">
+      {items.map((card) => (
+        <Link key={card.href} href={card.href} className="variants-canvas__card">
+          <div className="variants-canvas__media">
+            <img src={card.image} alt="" />
+          </div>
+          <div className="variants-canvas__copy">
+            <span className="variants-canvas__tag">{card.tag}</span>
+            <h3 className="variants-canvas__title">{card.title}</h3>
+            <p className="variants-canvas__desc">{card.description}</p>
+            <span className="variants-canvas__link">Open surface</span>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export function SolidsVariants() {
   return (
     <main className="variants-canvas">
       <div className="variants-canvas__inner">
         <Link href="/" className="variants-canvas__back">
-          ← Back to baseline store
+          ← Solids
         </Link>
-        <h1>
-          Three paywall variants
-          <br />
-          <em>for the same customer.</em>
-        </h1>
-        <p className="variants-canvas__lede">
-          The Solids buyer is one person — premium essentials, age 18-30 — but
-          they show up in three different rooms. Each variant below speaks to
-          one of those rooms. Tap a card to open the full variant. Hero
-          imagery generated with Gemini 3 Pro Image (&ldquo;Nano Banana Pro&rdquo;).
-        </p>
 
-        <div className="variants-canvas__grid">
-          {variantCards.map((card) => (
-            <Link key={card.href} href={card.href} className="variants-canvas__card">
-              <div className="variants-canvas__media">
-                <img src={card.image} alt="" />
-              </div>
-              <div className="variants-canvas__copy">
-                <span className="variants-canvas__tag">{card.tag}</span>
-                <h2 className="variants-canvas__title">{card.title}</h2>
-                <p className="variants-canvas__desc">{card.description}</p>
-                <span className="variants-canvas__link">Open variant</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <header className="variants-canvas__head">
+          <span className="variants-canvas__eyebrow">Solids — gallery</span>
+          <h1>
+            Six rooms,
+            <br />
+            <em>one wardrobe.</em>
+          </h1>
+          <p className="variants-canvas__lede">
+            Three capsules — the landing pages — and three checkouts — the
+            paywalls. Same cotton, six different rooms. Tap any tile to open
+            the surface.
+          </p>
+        </header>
+
+        <section className="variants-canvas__section">
+          <header className="variants-canvas__section-head">
+            <span className="variants-canvas__section-tag">The capsules</span>
+            <p>Three landings — Atelier, Tokyo, Coast.</p>
+          </header>
+          <Grid items={capsules} />
+        </section>
+
+        <section className="variants-canvas__section">
+          <header className="variants-canvas__section-head">
+            <span className="variants-canvas__section-tag">The checkouts</span>
+            <p>Three paywalls — Library, Members, Edition.</p>
+          </header>
+          <Grid items={paywalls} />
+        </section>
       </div>
     </main>
   );
