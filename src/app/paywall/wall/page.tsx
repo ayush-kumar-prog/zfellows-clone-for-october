@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Lock, ShieldCheck } from "lucide-react";
 import { products } from "@/data/solids";
 
 export const metadata: Metadata = {
   title: "Wall — Solids",
-  description: "Your seat at the table. Sign in to keep your cart.",
+  description: "A locked checkout hold for two premium cottons.",
 };
 
 const cart = [
@@ -23,48 +23,59 @@ export default function WallPaywall() {
       <img className="wall-bg" src="/thesolids/walls/wall-hero.jpg" alt="" />
       <div className="wall-scrim" aria-hidden />
 
-      <article className="wall-card" role="dialog" aria-modal="true" aria-label="Sign in to continue">
-        <header className="wall-card__head">
+      <section className="wall-stage" aria-label="Locked checkout">
+        <div className="wall-ledger">
+          <span className="wall-kicker">Checkout hold</span>
+          <h1>
+            The room is
+            <br />
+            locked for you.
+          </h1>
+          <p>
+            Your cottons are reserved behind a short sign-in wall. Keep the
+            hold, finish the order, leave with the best colors before the
+            queue opens again.
+          </p>
+        </div>
+
+        <article className="wall-card" role="dialog" aria-modal="true" aria-label="Sign in to continue">
           <span className="wall-eyebrow">
             <Lock size={11} strokeWidth={2} />
-            Solids · Checkout · Held
+            Solids private checkout
           </span>
-          <h1>
-            Your seat
-            <br />
-            at the table.
-          </h1>
-          <p className="wall-timer">
-            <span>This cart releases in</span>
-            <strong>09 : 42</strong>
-          </p>
-        </header>
 
-        <ul className="wall-cart">
-          {items.map((it) => (
+          <p className="wall-timer">
+            <span>Cart releases in</span>
+            <strong>08:59</strong>
+          </p>
+
+          <ul className="wall-cart">
+            {items.map((it, index) => (
             <li key={it.handle}>
-              <span className="wall-cart__name">{it.title}</span>
-              <span className="wall-cart__meta">{it.color} · M</span>
+              <img src={it.image} alt="" />
+              <span className="wall-cart__index">0{index + 1}</span>
+              <span className="wall-cart__name">{it.color} oversized</span>
               <span className="wall-cart__price">{it.price}</span>
             </li>
-          ))}
-        </ul>
+            ))}
+          </ul>
 
-        <p className="wall-sub">
-          We&rsquo;ve held this cart in your name. Sign in to keep your
-          seat, or create an account in under thirty seconds.
-        </p>
+          <div className="wall-assurance">
+            <ShieldCheck size={15} strokeWidth={1.8} />
+            <span>No spam account. Just a saved cart and faster returns.</span>
+          </div>
 
-        <div className="wall-actions">
-          <Link href="/account/login" className="wall-cta">
-            Sign in &amp; continue
-            <ArrowRight size={16} strokeWidth={1.8} />
-          </Link>
-          <Link href="/account/register" className="wall-link">
-            or create an account →
-          </Link>
-        </div>
-      </article>
+          <div className="wall-actions">
+            <Link href="/account/login" className="wall-cta">
+              Unlock checkout
+              <ArrowRight size={16} strokeWidth={2} />
+            </Link>
+            <Link href="/account/register" className="wall-link">
+              Create account in 30 seconds
+            </Link>
+          </div>
+        </article>
+      </section>
     </main>
   );
 }

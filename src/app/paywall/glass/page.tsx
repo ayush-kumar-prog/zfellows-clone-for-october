@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Glass — Solids",
-  description: "Drop your email. Take ten percent on the first cotton.",
+  description: "A quiet email gate for the first Solids cotton.",
 };
 
 export default function GlassPaywall() {
@@ -12,32 +13,41 @@ export default function GlassPaywall() {
       <img className="glass-bg" src="/thesolids/walls/glass-hero.jpg" alt="" />
       <div className="glass-scrim" aria-hidden />
 
-      <article className="glass-card" role="dialog" aria-modal="true" aria-label="Email gate">
-        <p className="glass-eyebrow">Welcome to Solids</p>
-        <h1>
-          Ten percent
-          <br />
-          <em>on the first cotton.</em>
-        </h1>
-        <p className="glass-sub">
-          Drop your email below. We&rsquo;ll send a small code by reply post,
-          then nothing else unless you ask. No newsletter storm, no daily
-          sales, no pressure.
-        </p>
+      <section className="glass-panel" role="dialog" aria-modal="true" aria-label="Email gate">
+        <aside className="glass-proof" aria-label="What you get">
+          <span>First order</span>
+          <strong>10% off</strong>
+          <p>One private code. No sale blast.</p>
+        </aside>
 
-        <form className="glass-form" aria-label="Email">
-          <input type="email" placeholder="your@studio.com" aria-label="Email" />
-          <button type="submit">
-            Send my code
+        <article className="glass-card">
+          <p className="glass-eyebrow">Soft entry</p>
+          <h1>
+            Let the first cotton
+            <em> find you quietly.</em>
+          </h1>
+          <p className="glass-sub">
+            Drop an email and we send one clean code for the first oversized
+            tee. After that, silence unless you ask for drops.
+          </p>
+
+          <div className="glass-form" aria-label="Email">
+            <span className="glass-mail" aria-hidden>
+              <Mail size={16} strokeWidth={1.8} />
+            </span>
+            <input type="email" placeholder="your@email.com" aria-label="Email" />
+            <button type="button">
+              Send code
+              <ArrowRight size={14} strokeWidth={1.8} />
+            </button>
+          </div>
+
+          <Link href="/collections/mens-oversized-t-shirts" className="glass-foot">
+            Continue without the code
             <ArrowRight size={14} strokeWidth={1.6} />
-          </button>
-        </form>
-
-        <p className="glass-foot">
-          One code. Then quiet.
-          <a href="#"> No thanks, take me to the cotton.</a>
-        </p>
-      </article>
+          </Link>
+        </article>
+      </section>
     </main>
   );
 }

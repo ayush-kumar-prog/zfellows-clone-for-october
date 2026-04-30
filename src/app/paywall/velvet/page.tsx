@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Velvet — Solids",
-  description: "Slip in the side door. Fifteen percent on your first cotton.",
+  description: "A first-visit invitation for the Solids side room.",
 };
 
 export default function VelvetPaywall() {
@@ -12,33 +13,41 @@ export default function VelvetPaywall() {
       <img className="velvet-bg" src="/thesolids/walls/velvet-hero.jpg" alt="" />
       <div className="velvet-scrim" aria-hidden />
 
-      <article className="velvet-card" role="dialog" aria-modal="true" aria-label="First-time entry">
-        <span className="velvet-emblem" aria-hidden>※</span>
+      <section className="velvet-room" role="dialog" aria-modal="true" aria-label="First-time entry">
+        <article className="velvet-note">
+          <span className="velvet-emblem" aria-hidden>
+            <Sparkles size={18} strokeWidth={1.6} />
+          </span>
+          <p className="velvet-eyebrow">First visit privilege</p>
+          <h1>
+            A side room for
+            <em> new regulars.</em>
+          </h1>
+          <p className="velvet-sub">
+            Take fifteen percent on your first cotton. One note lands in your
+            inbox, then the room goes quiet.
+          </p>
 
-        <p className="velvet-eyebrow">A side door</p>
-        <h1>
-          Slip in,
-          <br />
-          <em>friend.</em>
-        </h1>
-        <p className="velvet-sub">
-          First time at Solids? Take fifteen percent on the first cotton,
-          just because. Drop your email below and we&rsquo;ll send the
-          code by hand. One note. No email storm.
-        </p>
+          <div className="velvet-form" aria-label="Email">
+            <input type="email" placeholder="email for the side-room code" aria-label="Email" />
+            <button type="button">
+              Send code
+              <ArrowRight size={14} strokeWidth={1.6} />
+            </button>
+          </div>
 
-        <form className="velvet-form" aria-label="Email">
-          <input type="email" placeholder="your name @ studio" aria-label="Email" />
-          <button type="submit">
-            Send the code
-            <ArrowRight size={14} strokeWidth={1.6} />
-          </button>
-        </form>
+          <Link href="/collections/mens-oversized-t-shirts" className="velvet-foot">
+            Already know the cottons
+            <ArrowRight size={13} strokeWidth={1.8} />
+          </Link>
+        </article>
 
-        <p className="velvet-foot">
-          <a href="#">Already a friend? Skip the door →</a>
-        </p>
-      </article>
+        <aside className="velvet-ticket" aria-label="Offer">
+          <span>First cotton</span>
+          <strong>15</strong>
+          <em>percent off</em>
+        </aside>
+      </section>
     </main>
   );
 }

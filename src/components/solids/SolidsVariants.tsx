@@ -65,41 +65,41 @@ const checkouts: Card[] = [
 const paywalls: Card[] = [
   {
     tag: "Paywall 01 — Wall",
-    title: "Sign in to keep your seat.",
+    title: "The room is locked for you.",
     description:
-      "Hard sign-in wall. Navy + brass + spotlight. The cart is held for nine minutes, then the seat opens.",
+      "A locked checkout ledger with product lines, timer pressure, and a premium brass-on-night mood.",
     href: "/paywall/wall",
     image: "/thesolids/walls/wall-hero.jpg",
   },
   {
     tag: "Paywall 02 — Glass",
-    title: "Drop your email. Take ten.",
+    title: "A quiet code through the glass.",
     description:
-      "An email gate over a sun-fogged window. Cream and serif. One code, then quiet — no email storm.",
+      "A translucent email gate: soft studio daylight, one private discount, no sale-blast energy.",
     href: "/paywall/glass",
     image: "/thesolids/walls/glass-hero.jpg",
   },
   {
     tag: "Paywall 03 — Vault",
-    title: "Reserved for members.",
+    title: "The good colors sit behind the key.",
     description:
-      "Members-only restock. A brass key on emerald velvet. Sign in or join the Atelier circle for free.",
+      "A members-only restock room with a vault dial, key ritual, and tangible member benefits.",
     href: "/paywall/vault",
     image: "/thesolids/walls/vault-hero.jpg",
   },
   {
     tag: "Paywall 04 — Pulse",
-    title: "Nine minutes to checkout.",
+    title: "The cart has a pulse.",
     description:
-      "Urgency timer. Ink, tomato red, and a watch face that ticks. After ten minutes the seats reopen.",
+      "A live hold timer with reserved items, progress pressure, and a finish-now checkout path.",
     href: "/paywall/pulse",
     image: "/thesolids/walls/pulse-hero.jpg",
   },
   {
     tag: "Paywall 05 — Velvet",
-    title: "Slip in the side door.",
+    title: "A side room for new regulars.",
     description:
-      "First-time soft entry. Burgundy curtain, cream card, fifteen percent for friends arriving for the first time.",
+      "A first-visit concierge note in burgundy velvet: intimate, generous, and still conversion-focused.",
     href: "/paywall/velvet",
     image: "/thesolids/walls/velvet-hero.jpg",
   },

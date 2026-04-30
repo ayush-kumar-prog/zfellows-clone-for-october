@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Clock3 } from "lucide-react";
 import { products } from "@/data/solids";
 
 export const metadata: Metadata = {
   title: "Pulse — Solids",
-  description: "09:42 to checkout. Then the seats reopen.",
+  description: "A live cart hold timer for reserved Solids cotton.",
 };
 
 const cart = [
@@ -27,42 +28,49 @@ export default function PulsePaywall() {
       <img className="pulse-bg" src="/thesolids/walls/pulse-hero.jpg" alt="" />
       <div className="pulse-scrim" aria-hidden />
 
-      <section className="pulse-clock" aria-label="Cart hold timer">
-        <p className="pulse-tag">Cart held · seats released after</p>
-        <div className="pulse-time">
-          <span>09</span>
-          <em>:</em>
-          <span>42</span>
+      <section className="pulse-board" aria-label="Cart hold timer">
+        <div className="pulse-clock">
+          <p className="pulse-tag">
+            <Clock3 size={15} strokeWidth={2} />
+            Live cart hold
+          </p>
+          <div className="pulse-time" aria-label="Eight minutes and fifty nine seconds remaining">
+            <span>08</span>
+            <em>:</em>
+            <span>59</span>
+          </div>
+          <p className="pulse-sub">
+            Two high-demand colors are reserved now. Miss the pulse and they
+            return to the queue.
+          </p>
         </div>
-        <p className="pulse-sub">
-          Two cottons reserved for the next ten minutes. After that the
-          seats reopen for the next person on the list.
-        </p>
-      </section>
 
-      <section className="pulse-cart" aria-label="Your reservation">
-        <ul>
-          {items.map((it, i) => (
-            <li key={it.handle} className="pulse-line">
-              <span className="pulse-line__num">N°0{i + 1}</span>
-              <div className="pulse-line__media">
-                <img src={it.image} alt={it.title} />
-              </div>
-              <span className="pulse-line__name">{it.title}</span>
-              <span className="pulse-line__meta">{it.color} · M</span>
-              <span className="pulse-line__price">{it.price}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="pulse-total">
-          <span>Total</span>
-          <strong>Rs. {subtotal.toLocaleString("en-IN")}</strong>
-        </div>
-        <button type="button" className="pulse-cta">
-          Complete now
-          <ArrowRight size={18} strokeWidth={2.2} />
-        </button>
-        <p className="pulse-fineprint">Hold expires at 09:42 · No restock once gone</p>
+        <article className="pulse-cart" aria-label="Your reservation">
+          <ul>
+            {items.map((it, i) => (
+              <li key={it.handle} className="pulse-line">
+                <span className="pulse-line__num">0{i + 1}</span>
+                <div className="pulse-line__media">
+                  <img src={it.image} alt="" />
+                </div>
+                <span className="pulse-line__name">{it.color} oversized tee</span>
+                <span className="pulse-line__price">{it.price}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="pulse-meter" aria-hidden>
+            <span />
+          </div>
+          <div className="pulse-total">
+            <span>Reserved total</span>
+            <strong>Rs. {subtotal.toLocaleString("en-IN")}</strong>
+          </div>
+          <Link href="/cart" className="pulse-cta">
+            Finish hold
+            <ArrowRight size={18} strokeWidth={2.2} />
+          </Link>
+          <p className="pulse-fineprint">Size M held. Queue reopens at zero.</p>
+        </article>
       </section>
     </main>
   );
