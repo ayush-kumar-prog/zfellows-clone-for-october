@@ -48,3 +48,4 @@ next-env.d.ts
 # Local temp files
 temp/
 docs/design-references/
+scripts/gen-new-paywalls.mjs
